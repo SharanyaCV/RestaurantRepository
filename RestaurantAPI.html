@@ -1,0 +1,548 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title> The demo of Food Ordering API </title>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+
+        //CUSTOMERS
+        function GetListOfCustomers() {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Customer/List',
+                data: {},
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#GetCustomerList').on("click", GetListOfCustomers);
+
+        })
+
+
+        function InsertCustomer() {
+            var newCustomer = {
+                "Id": "50",
+                "FirstName": "RETW",
+                "LastName": "wyeg",
+                "PhoneNumber": 8687565456,
+                "Email": "retw@gmail.com",
+
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Customer/Insert',
+                data: JSON.stringify(newCustomer),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#InsertCustomer').on("click", InsertCustomer);
+
+        })
+
+
+        function SaveCustomer(customerId) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Customer/Save',
+                data: JSON.stringify({ "Customer_Id": "100" }),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#SaveCustomer').on("click", SaveCustomer);
+
+        })
+
+        function DeleteCustomer(customerId) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Customer/Delete',
+                data: JSON.stringify(11),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#DeleteCustomer').on("click", DeleteCustomer);
+
+        })
+
+
+        //FEEDBACK
+
+        function GetListOfFeedbacks() {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Feedback/List',
+                data: {},
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#GetFeedbackList').on("click", GetListOfFeedbacks);
+
+        })
+
+
+        function InsertFeedback() {
+            var newFeedback = {
+                "Id": "22",
+                "CustomerID": "5",
+                "VisitedDate": "20 Jan 2019",
+                "StaffId": 868,
+                "ServiceAreas": "Main Hall",
+                "FeedbackComment": "Good",
+                "ManagerComment": "Good",
+                "IsReviewd": "True",
+                "ReviewedBy": "874",
+                "ReviewDate": "21 Jan 2019"
+
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Feedback/Insert',
+                data: JSON.stringify(newFeedback),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#InsertFeedback').on("click", InsertFeedback);
+
+        })
+
+
+        function SaveFeedback(Id) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Feedback/Save',
+                data: JSON.stringify({}),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#SaveFeedback').on("click", SaveFeedback);
+
+        })
+
+        function DeleteFeedback(Id) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Feedback/Delete',
+                data: JSON.stringify(5), //passing ID
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#DeleteFeedback').on("click", DeleteFeedback);
+
+        })
+
+
+        //EMPLOYEE
+        function GetListOfEmployees() {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Employee/List',
+                data: {},
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#GetEmployeeList').on("click", GetListOfEmployees);
+
+        })
+
+        function InsertEmployee() {
+            var newEmployee = {
+                "Id": "50",
+                "FirstName": "M",
+                "LastName": "N",
+                "Job": "Manager",
+
+
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Employee/Insert',
+                data: JSON.stringify(newEmployee),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#InsertEmployee').on("click", InsertEmployee);
+
+        })
+
+        function SaveEmployee(Id) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Employee/Save',
+                data: JSON.stringify({}),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#SaveEmployee').on("click", SaveEmployee);
+
+        })
+
+        function DeleteEmployee(Id) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/Employee/Delete',
+                data: JSON.stringify(4), //passing ID
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#DeleteEmployee').on("click", DeleteEmployee);
+
+        })
+
+
+
+        //EVENT TYPES
+        function GetListOfEventTypes() {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/EventTypes/List',
+                data: {},
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#GetEventTypesList').on("click", GetListOfEventTypes);
+
+        })
+
+        function InsertEventTypes() {
+            var newEventType = {
+                "Id": "4",
+                "EventType": "House-Warming",
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/EventTypes/Insert',
+                data: JSON.stringify(newEventType),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#InsertEventType').on("click", InsertEventTypes);
+
+        })
+
+        function SaveEventType() {
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/EventTypes/Save',
+                data: JSON.stringify({}),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#SaveEventType').on("click", SaveEventType);
+
+        })
+
+        function DeleteEventType(Id) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/EventType/Delete',
+                data: JSON.stringify(3), //passing ID
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#DeleteEventType').on("click", DeleteEventType);
+
+        })
+        //SERVICE AREAS
+        function GetListOfServiceAreas() {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/ServiceAreas/List',
+                data: {},
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#GetServiceAreasList').on("click", GetListOfServiceAreas);
+
+        })
+
+        function InsertServiceArea() {
+            var newServiceArea = {
+                "Id": "4",
+                "Area Name": "Rooms",
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/ServiceAreas/Insert',
+                data: JSON.stringify(newServiceArea),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#InsertServiceArea').on("click", InsertServiceArea);
+
+        })
+
+
+        function SaveServiceArea() {
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/ServiceArea/Save',
+                data: JSON.stringify({}),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#SaveServiceArea').on("click", SaveServiceArea);
+
+        })
+        function DeleteServiceArea(Id) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:61435/api/ServiceArea/Delete',
+                data: JSON.stringify(3), //passing ID
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+                    console.log(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        $(document).ready(function GeneralPost() {
+
+            $('#DeleteServiceArea').on("click", DeleteServiceArea);
+
+        })
+
+    </script>
+</head>
+<body>
+
+    
+    <div style="display:inline">
+        <button id="GetCustomerList" value="details" style="width:100px; color:white;font-family:'Times New Roman';font-size:12px;background:fixed;background-color:darkblue">Click for Customer List</button><br />
+        <button id="InsertCustomer" value="details" style="width:100px; color:white;font-family:'times new roman';font-size:12px;background:fixed;background-color:darkblue;">Click to Insert Customer</button><br />
+        <button id="DeleteCustomer" value="details" style="width:100px; color:white;font-family:'Times New Roman';font-size:12px;background:fixed;background-color:darkblue">Click to Delete Customer</button><br />
+
+        <button id="GetFeedbackList" value="details" style="width:100px; color:white;font-family:'Times New Roman';font-size:12px;background:fixed;background-color:darkblue">Click for Feedback List</button><br />
+        <button id="InsertFeedback" value="details" style="width:100px; color:white;font-family:'times new roman';font-size:12px;background:fixed;background-color:darkblue;">Click to Insert Feedback</button><br />
+        <button id="DeleteFeedback" value="details" style="width:100px; color:white;font-family:'Times New Roman';font-size:12px;background:fixed;background-color:darkblue">Click to Delete Feedback</button><br />
+
+        <button id="GetEmployeeList" value="details" style="width:100px; color:white;font-family:'Times New Roman';font-size:12px;background:fixed;background-color:darkblue">Click for Employee List</button><br />
+        <button id="InsertEmployee" value="details" style="width:100px; color:white;font-family:'times new roman';font-size:12px;background:fixed;background-color:darkblue;">Click to Insert Employee</button><br />
+        <button id="DeleteEmployee" value="details" style="width:100px; color:white;font-family:'Times New Roman';font-size:12px;background:fixed;background-color:darkblue">Click to Delete Employee</button><br />
+
+
+        <button id="GetEventTypesList" value="details" style="width:100px; color:white;font-family:'Times New Roman';font-size:12px;background:fixed;background-color:darkblue">Click for List of Event Types</button><br />
+        <button id="InsertEventType" value="details" style="width:100px; color:white;font-family:'times new roman';font-size:12px;background:fixed;background-color:darkblue;">Click to Insert Event Type</button><br />
+        <button id="DeleteEventType" value="details" style="width:100px; color:white;font-family:'Times New Roman';font-size:12px;background:fixed;background-color:darkblue">Click to Delete Event Type</button><br />
+
+        <button id="GetServiceAreasList" value="details" style="width:100px; color:white;font-family:'Times New Roman';font-size:12px;background:fixed;background-color:darkblue">Click for List of Service Areas</button><br />
+        <button id="InsertServiceArea" value="details" style="width:100px; color:white;font-family:'times new roman';font-size:12px;background:fixed;background-color:darkblue;">Click to Insert Service Area</button><br />
+        <button id="DeleteServiceArea" value="details" style="width:100px; color:white;font-family:'Times New Roman';font-size:12px;background:fixed;background-color:darkblue">Click to Delete Service Area</button><br />
+
+
+
+    </div>
+
+</body>
+</html>
