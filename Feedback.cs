@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
-using RestaurantAPI.Models;
-using RestaurantAPI.Context;
-using RestaurantAPI.Repository;
-using System.Web.Http;
+using RestaurantApplication3.Models;
+using RestaurantApplication3.Context;
+using RestaurantApplication3.Repository;
+using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace RestaurantAPI.Models
+namespace RestaurantApplication3.Models
 {
-   // [Table("Feedback")]
+    // [Table("Feedback")]
     public class Feedback
     {
-       // [ForeignKey("CustomerID")]
-         [Key]
+        // [ForeignKey("CustomerID")]
+        [Key]
         public Int64 Id { get; set; }
         public Int64 CustomerID { get; set; }
         public DateTime? VisitedDate { get; set; }
@@ -28,9 +28,9 @@ namespace RestaurantAPI.Models
         public int? ReviewedBy { get; set; }
         public DateTime? ReviewDate { get; set; }
 
-       public Customer customer { get; set; }
-      //  [ForeignKey("FeedBackID")]
-       public ICollection<FeedbackScores> feedbackScoresRecord { get; set; }
+        public Customer customer { get; set; }
+        //  [ForeignKey("FeedBackID")]
+        // public ICollection<FeedbackScores> feedbackScoresRecord { get; set; }
 
     }
 }

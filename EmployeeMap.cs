@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.ModelConfiguration;
-using RestaurantAPI.Models;
+using RestaurantApplication3.Models;
 
-namespace RestaurantAPI.Context.Mapping
+namespace RestaurantApplication3.Context.Mapping
 {
     public class EmployeeMap : EntityTypeConfiguration<Employee>
     {
@@ -25,7 +25,7 @@ namespace RestaurantAPI.Context.Mapping
             this.Property(t => t.LastName).HasColumnName("LastName");
             this.Property(t => t.Job).HasColumnName("Job");
 
-           
+
         }
     }
 }

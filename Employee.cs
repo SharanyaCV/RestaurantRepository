@@ -6,9 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace RestaurantAPI.Models
+namespace RestaurantApplication3.Models
 {
-   // [Table("Employee")]
+    // [Table("Employee")]
     public class Employee
     {
 
@@ -17,6 +17,6 @@ namespace RestaurantAPI.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Job { get; set; }
-        public ICollection<ServiceAllocations> ServiceAllocationsRecord { get; set; }
+         public ICollection<ServiceAllocations> ServiceAllocationsRecord { get; set; }
     }
 }

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using RestaurantAPI.Context.Mapping;
-using RestaurantAPI.Models;
-using RestaurantAPI.Context;
+using RestaurantApplication3.Context.Mapping;
+using RestaurantApplication3.Models;
+using RestaurantApplication3.Context;
 
-namespace RestaurantAPI.Models
+namespace RestaurantApplication3.Models
 {
     public class CustomerContext : BaseContext<CustomerContext>
     {
@@ -22,5 +22,13 @@ namespace RestaurantAPI.Models
             modelBuilder.Configurations.Add(new CustomerMap());
 
         }
+
+        public System.Data.Entity.DbSet<RestaurantApplication3.Models.Feedback> Feedbacks { get; set; }
+
+        public System.Data.Entity.DbSet<RestaurantApplication3.Models.Employee> Employees { get; set; }
+
+        public System.Data.Entity.DbSet<RestaurantApplication3.Models.Events> Events { get; set; }
+
+        public System.Data.Entity.DbSet<RestaurantApplication3.Models.EventTypes> EventTypes { get; set; }
     }
 }

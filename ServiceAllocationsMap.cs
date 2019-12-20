@@ -1,42 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity.ModelConfiguration;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using RestaurantApplication3.Models;
+using System;
 
-
-using System.Data.Entity.ModelConfiguration;
-using RestaurantAPI.Models;
-
-namespace RestaurantAPI.Context.Mapping
+namespace RestaurantApplication3.Context.Mapping
 {
     public class ServiceAllocationsMap : EntityTypeConfiguration<ServiceAllocations>
     {
         public ServiceAllocationsMap()
         {
-            this.HasKey(t => t.Id);
-            
-            //Properties
-            this.Property(t => t.ShiftDate);
-            this.Property(t => t.shiftstartTime).HasMaxLength(10);
-            this.Property(t => t.shiftendtime).HasMaxLength(10);
-           
-            //table column mapping
-            this.ToTable("ServiceAllocations");
-            this.Property(t => t.EmpId).HasColumnName("EmpId");
-            this.Property(t => t.ShiftDate).HasColumnName("ShiftDate");
-            this.Property(t => t.shiftstartTime).HasColumnName("shiftstartTime");
-            this.Property(t => t.ServiceId).HasColumnName("ServiceId");
-            this.Property(t => t.Id).HasColumnName("Id");
-       
-          //this.HasRequired<Employee>(c =>c.employees)
-          //      .WithMany(f => f.ServiceAllocationsRecord)
-          //      .HasForeignKey<int>(c => c.EmpId);
+            this.HasKey(s => s.Id);
 
-            this.HasRequired<ServiceArea>(c => c.ServiceArea)
+            this.Property(s => s.EmpId);
+            this.Property(s => s.ShiftDate);
+            this.Property(s => s.shiftendtime);
+            this.Property(s => s.shiftstartTime);
+            this.Property(s => s.ServiceId);
+
+            this.ToTable("ServiceAllocations");
+            this.Property(s => s.Id).HasColumnName("Id");
+            this.Property(s => s.EmpId).HasColumnName("EmpId");
+            this.Property(s => s.ShiftDate).HasColumnName("ShiftDate");
+            this.Property(s => s.shiftendtime).HasColumnName("shiftendtime");
+            this.Property(s => s.shiftstartTime).HasColumnName("shiftstartTime");
+            this.Property(s => s.ServiceId).HasColumnName("ServiceId");
+
+            this.HasRequired<Employee>(c => c.employees)
                 .WithMany(f => f.ServiceAllocationsRecord)
+                .HasForeignKey<int>(c => c.EmpId);
+
+            this.HasRequired<ServiceAreas>(c => c.ServiceArea)
+                .WithMany(f => f.ServiceAllocationsRecords)
                 .HasForeignKey<Int64>(c => c.ServiceId);
+
+
+
         }
+
+
     }
 }

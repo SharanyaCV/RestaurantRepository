@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.ModelConfiguration;
-using RestaurantAPI.Models;
-
+using RestaurantApplication3.Models;
+using RestaurantApplication3.Context;
+using System.Data.Entity;
 
 public class FeedbackRepository : IDisposable
 {
@@ -29,26 +30,48 @@ public class FeedbackRepository : IDisposable
         return context.Feedbacks.Find(Id);
     }
 
-    public Feedback InsertFeedback(Feedback feedback)
+    public void EditFeedback(Feedback feedback)
     {
-      return  context.Feedbacks.Add(feedback);
-    }
+        Feedback editFeedback = context.Feedbacks.Find(feedback.Id);
+        editFeedback.Id = feedback.Id;
+        editFeedback.CustomerID = feedback.CustomerID;
+        editFeedback.VisitedDate = feedback.VisitedDate;
+        editFeedback.StaffId = feedback.StaffId;
+        editFeedback.ServiceAreas = feedback.ServiceAreas;
+        editFeedback.FeedbackComment = feedback.FeedbackComment;
+        editFeedback.ManagerComment = feedback.ManagerComment;
+        editFeedback.IsReviewd = feedback.IsReviewd;
+        editFeedback.ReviewedBy = feedback.ReviewedBy;
+        editFeedback.ReviewDate = feedback.ReviewDate;
 
-    public Feedback DeleteFeedback(int Id)
+        context.Entry(editFeedback).State = EntityState.Modified;
+        context.SaveChanges();
+
+    }
+    public Feedback UpdateFeedback(Feedback feedback)
     {
-        Feedback feedback = context.Feedbacks.Find(Id);
-        return context.Feedbacks.Remove(feedback);
+        return context.Feedbacks.Add(feedback);
+    }
+    public Feedback CreateFeedback(Feedback feedback)
+    {
+        return context.Feedbacks.Add(feedback);
+    }
+    public Feedback DeleteFeedback(Feedback feedback)
+    {
+        Feedback removeFeedback = context.Feedbacks.Find(feedback.Id);
+
+        return context.Feedbacks.Remove(removeFeedback);
     }
 
 
     public void Save()
     {
-        context.SaveChanges();
+        this.context.SaveChanges();
     }
 
 
     public void Dispose()
     {
-        context.Dispose();
+        this.context.Dispose();
     }
 }

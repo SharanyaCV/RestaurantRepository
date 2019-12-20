@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity.ModelConfiguration;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity.ModelConfiguration;
-using RestaurantAPI.Models;
+using RestaurantApplication3.Models;
+using System;
 
-namespace RestaurantAPI.Context.Mapping
+namespace RestaurantApplication3.Context.Mapping
 {
     public class FeedbackMap : EntityTypeConfiguration<Feedback>
     {
@@ -15,9 +12,7 @@ namespace RestaurantAPI.Context.Mapping
             //Primary Key
             this.HasKey(t => t.Id);
             //Property
-            this.Property(t => t.ServiceAreas).HasMaxLength(40);
-
- 
+            this.Property(t => t.ServiceAreas);
 
             //Table& column mapping
             this.ToTable("Feedback");
@@ -32,15 +27,12 @@ namespace RestaurantAPI.Context.Mapping
             this.Property(t => t.ReviewedBy).HasColumnName("ReviewedBy");
             this.Property(t => t.ReviewDate).HasColumnName("ReviewDate");
             //relationship
-
-            //this.HasOptional(t => t.Customer)
-            //    .WithMany(t => t.Feedbacks)
-            //    .HasForeignKey(d => d.CustomerID);
-
             this.HasRequired<Customer>(c => c.customer)
-                .WithMany(f => f.feedbacks)
+                .WithMany(f => f.Feedbacks)
                 .HasForeignKey<Int64>(c => c.CustomerID);
-          
+
+
+
         }
     }
 }

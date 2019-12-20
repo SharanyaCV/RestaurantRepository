@@ -4,23 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using RestaurantAPI.Context;
-using RestaurantAPI.Context.Mapping;
-using RestaurantAPI.Models;
+using RestaurantApplication3.Context;
+using RestaurantApplication3.Context.Mapping;
+using RestaurantApplication3.Models;
 
-namespace RestaurantAPI.Models
+namespace RestaurantApplication3.Models
 {
     public class FeedbackContext : BaseContext<FeedbackContext>
     {
-    
-        public FeedbackContext(): base()
+
+        public FeedbackContext() : base()
         {
 
         }
-        public DbSet<Feedback> Feedbacks  { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-           
+
             modelBuilder.Configurations.Add(new FeedbackMap());
         }
     }

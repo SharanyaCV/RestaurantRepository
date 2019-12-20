@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <h1 align="center" style="color:red;font-style:normal; font-family:Arial, Helvetica, sans-serif;font-size:80px">UPCOMING EVENTS</h1>
+    function GetEventReminders() {
+
+    $.ajax({
+    type: 'POST',
+    url: 'http://localhost:61435/api/Customer/List',u3
+    data: {},
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: function GeneralPost(data, textStatus, XMLHttpRequest) {
+    console.log(data);
+
+    },
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    console.log('Error in Operation');
+    }
+    });
+    }
+    $(document).ready(function GeneralPost() {
+
+    $('#EventReminders').on("click", GetEventReminders);
+
+    })
+
+</head>
+<body>
+    <div>
+        <div>
+
+            <label><input type="checkbox" name="Events" value="Email Notifications" style="zoom:1.5">Email Notifications</label>
+            <label><input type="checkbox" name="Events" value="Email Notifications" style="zoom:1.5">Text message Notifications</label></span>
+        </div>
+
+        <p style="font-size:30px"</p> <i>Anniversary</i> <input type="checkbox" name="Events" value="Anniversary" style="zoom:1.5">
+
+        <p style="font-size:30px"</P> <i>Birthday</i> <input type="checkbox" name="Events" value="Anniversary" style="zoom:1.5">
+
+        <p style="font-size:30px"</p> <i>Get-Together</i> <input type="checkbox" name="Events" value="Anniversary" style="zoom:1.5">
+
+
+
+    </div>
+</body>
+<div style="">
+    <button id="Save and Submit" style="width:100px; height:200px;color:Blue; font-family:Times New Roman; font-size:18px; background-color:Mint Green;">Save and Submit</button>
+</div>
+
+
+
+</html>

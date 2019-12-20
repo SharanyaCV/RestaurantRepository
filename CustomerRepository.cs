@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.ModelConfiguration;
-using RestaurantAPI.Models;
-using RestaurantAPI.Context;
+using RestaurantApplication3.Models;
+using RestaurantApplication3.Context;
+using System.Data.Entity;
 
-namespace RestaurantAPI.Repository
+namespace RestaurantApplication3.Repository
 {
-    public class CustomerRepository 
+    public class CustomerRepository : IDisposable
     {
         private CustomerContext context;
         public CustomerRepository(CustomerContext context)
@@ -21,7 +22,7 @@ namespace RestaurantAPI.Repository
             context = new CustomerContext();
 
         }
-     
+
 
         public IEnumerable<Customer> GetCustomers()
         {
@@ -31,28 +32,46 @@ namespace RestaurantAPI.Repository
         {
             return context.Customers.Find(customerId);
         }
-
-        public Customer InsertCustomer(Customer customer)
+        public void EditCustomer(Customer customer)
+        {
+            Customer editCustomer = context.Customers.Find(customer.Id);
+            editCustomer.FirstName = customer.FirstName;
+            editCustomer.LastName = customer.LastName;
+            editCustomer.Email = customer.Email;
+            editCustomer.PhoneNumber = customer.PhoneNumber;
+            context.Entry(editCustomer).State = EntityState.Modified;
+            context.SaveChanges();
+            //context.Customers.Add(editCustomer);
+        }
+        public Customer UpdateCustomer(Customer customer)
+        {
+            return context.Customers.Add(customer);
+        }
+        public Customer CreateCustomer(Customer customer)
         {
             return context.Customers.Add(customer);
         }
 
-        public Customer DeleteCustomer(int customerId)
+        public Customer DeleteCustomer(Customer customer)
         {
-            Customer customer = context.Customers.Find(customerId);
-          return  context.Customers.Remove(customer);
+            Customer removecustomer = context.Customers.Find(customer.Id);
+
+            return context.Customers.Remove(removecustomer);
         }
 
 
         public void Save()
         {
-             context.SaveChanges();
+            this.context.SaveChanges();
         }
 
-       
+
         public void Dispose()
         {
-            context.Dispose();
+            this.context.Dispose();
         }
+
+
+
     }
 }

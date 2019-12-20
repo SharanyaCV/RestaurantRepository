@@ -1,26 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using RestaurantAPI.Context;
-using RestaurantAPI.Context.Mapping;
-using RestaurantAPI.Models;
+using RestaurantApplication3.Models;
+using RestaurantApplication3.Context.Mapping;
 
-namespace RestaurantAPI.Models
+namespace RestaurantApplication3.Context
 {
-    public class ServiceAllocationsContext : BaseContext<ServiceAllocationsContext>
-    {
-        public ServiceAllocationsContext(): base()
-        {
 
+    public partial class ServiceAllocationContext : DbContext
+    {
+        static ServiceAllocationContext()
+        {
+            Database.SetInitializer<ServiceAllocationContext>(null);
+        }
+        public ServiceAllocationContext()
+            : base("Name=CustomerContext")
+        {
         }
         public DbSet<ServiceAllocations> ServiceAllocations { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
             modelBuilder.Configurations.Add(new ServiceAllocationsMap());
+
         }
+
+        public System.Data.Entity.DbSet<RestaurantApplication3.Models.Employee> Employees { get; set; }
+
+        public System.Data.Entity.DbSet<RestaurantApplication3.Models.ServiceAreas> ServiceAreas { get; set; }
     }
 }

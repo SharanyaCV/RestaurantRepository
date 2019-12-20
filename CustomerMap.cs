@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.ModelConfiguration;
-using RestaurantAPI.Models;
+using RestaurantApplication3.Models;
 
-namespace RestaurantAPI.Context.Mapping
+namespace RestaurantApplication3.Context.Mapping
 {
     public class CustomerMap : EntityTypeConfiguration<Customer>
     {

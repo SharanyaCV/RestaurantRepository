@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace RestaurantAPI.Models
+namespace RestaurantApplication3.Models
 {
     public class Customer
     {
@@ -14,7 +14,8 @@ namespace RestaurantAPI.Models
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
-        public ICollection<Feedback> feedbacks { get; set; }
+        public ICollection<Feedback> Feedbacks { get; set; }
+        public Events Events { get; set; }
     }
-    
+
 }

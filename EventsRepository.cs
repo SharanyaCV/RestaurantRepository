@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.ModelConfiguration;
-using RestaurantAPI.Models;
-using RestaurantAPI.Context;
+using RestaurantApplication3.Models;
+using RestaurantApplication3.Context;
+using System.Data.Entity;
 
-namespace RestaurantAPI.Repository
+namespace RestaurantApplication3.Repository
 {
-    public class EventsRepository
+    public class EventsRepository: IDisposable
+
     {
         private EventsContext context;
         public EventsRepository(EventsContext context)
@@ -19,27 +21,44 @@ namespace RestaurantAPI.Repository
         public EventsRepository()
         {
             context = new EventsContext();
-
         }
 
         public IEnumerable<Events> GetEvents()
         {
             return context.Events.ToList();
         }
-        public Events GetEventsByID(int eventsId)
+        public IEnumerable<Events> GetEventsList()
         {
-            return context.Events.Find(eventsId);
+            return context.Events.ToList();
         }
-
-        public Events InsertEvents(Events events)
+        public Events GetEventsByID(int eventId)
+        {
+            return context.Events.Find(eventId);
+        }
+        public Events CreateEvent(Events events)
         {
             return context.Events.Add(events);
         }
-
-        public Events DeleteEvents(int eventsId)
+        public Events UpdateEvent(Events events)
         {
-            Events events = context.Events.Find(eventsId);
-            return context.Events.Remove(events);
+            return context.Events.Add(events);
+        }
+        public void EditEvent(Events events)
+        {
+            Events editEvent = context.Events.Find(events.EventId);
+            editEvent.EventId = events.EventId;
+            editEvent.EventTypeId = events.EventTypeId;
+            editEvent.EventDateTime = events.EventDateTime;
+
+            context.Entry(editEvent).State = EntityState.Modified;
+            context.SaveChanges();
+
+        }
+        public Events DeleteEvent(Events events)
+        {
+            Events removeEvents = context.Events.Find(events.EventId);
+
+            return context.Events.Remove(removeEvents);
         }
 
 
@@ -52,6 +71,20 @@ namespace RestaurantAPI.Repository
         public void Dispose()
         {
             context.Dispose();
+        }
+
+        //internal Events DeleteEvents(Events events)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public IEnumerable<Events> FindUpcomingEvents(TimeSpan nextNDays)
+        {
+            var now = DateTime.Now;
+            var next = DateTime.Now.Add(nextNDays);
+            // For debugging
+            var events = context.Events.Where(x => x.EventDateTime > now && x.EventDateTime <= next).ToList();
+            return events;
         }
     }
 }

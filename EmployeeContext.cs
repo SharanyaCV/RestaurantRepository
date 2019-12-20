@@ -4,15 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using RestaurantAPI.Context;
-using RestaurantAPI.Context.Mapping;
-using RestaurantAPI.Models;
+using RestaurantApplication3.Context;
+using RestaurantApplication3.Context.Mapping;
+using RestaurantApplication3.Models;
 
-namespace RestaurantAPI.Models
+namespace RestaurantApplication3.Models
 {
     public class EmployeeContext : BaseContext<EmployeeContext>
     {
-        public EmployeeContext(): base()
+        public EmployeeContext() : base()
         {
 
         }

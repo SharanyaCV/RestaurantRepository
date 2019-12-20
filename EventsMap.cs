@@ -4,18 +4,18 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.ModelConfiguration;
-using RestaurantAPI.Models;
+using RestaurantApplication3.Models;
 
-namespace RestaurantAPI.Context.Mapping
+namespace RestaurantApplication3.Context.Mapping
 {
     public class EventsMap : EntityTypeConfiguration<Events>
     {
         public EventsMap()
         {
-            
+
             //Properties
             this.HasKey(t => t.EventId);
-           
+
 
             //table column mapping
             this.ToTable("Events");
@@ -23,9 +23,7 @@ namespace RestaurantAPI.Context.Mapping
             this.Property(t => t.EventTypeId).HasColumnName("EventTypeId");
             this.Property(t => t.EventDateTime).HasColumnName("EventDateTime");
 
-            this.HasRequired<EventTypes>(e => e.EventTypesRecord)
-                .WithMany(e => e.events)
-                .HasForeignKey<Int64>(e => e.EventTypeId);
+            this.HasRequired(x => x.Customer).WithRequiredPrincipal(y => y.Events);
         }
     }
 }

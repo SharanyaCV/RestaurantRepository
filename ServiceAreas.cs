@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
+
 namespace RestaurantApplication3.Models
 {
-    public class EventTypes
+    public class ServiceAreas
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Int64 Id { get; set; }
-        public string EventType { get; set; }
+        [MaxLength(40)]
+        public string AreaName { get; set; }
 
-        public ICollection<Events> events { get; set; }
+        public ICollection<ServiceAllocations> ServiceAllocationsRecords { get; set; }
     }
 }

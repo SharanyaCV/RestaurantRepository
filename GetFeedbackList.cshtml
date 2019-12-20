@@ -1,0 +1,81 @@
+﻿@model IEnumerable<RestaurantApplication3.Models.Feedback>
+
+@{
+    ViewBag.Title = "GetFeedbackList";
+}
+
+<h2>GetFeedbackList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VisitedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceAreas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FeedbackComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsReviewd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VisitedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceAreas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeedbackComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsReviewd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

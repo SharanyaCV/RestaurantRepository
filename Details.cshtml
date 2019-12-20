@@ -1,0 +1,90 @@
+﻿@model RestaurantApplication3.Models.Feedback
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Feedback</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VisitedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VisitedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceAreas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceAreas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FeedbackComment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FeedbackComment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerComment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagerComment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsReviewd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsReviewd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "GetFeedbackList")
+</p>
